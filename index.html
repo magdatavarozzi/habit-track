@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psychologically Optimized Habit Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Home Screen -->
+  <div id="home">
+    <h1>Habit Tracker</h1>
+    <p>Current Streak: <span id="streak">0</span></p>
+    <p>Points: <span id="points">0</span></p>
+    <p>Replacements Today: <span id="replacements">0</span></p>
+    <p>Mindful Skips Today: <span id="skips">0</span></p>
+    <button onclick="showTrigger()">Start Habit</button>
+  </div>
+
+  <!-- Trigger Screen -->
+  <div id="trigger" class="screen">
+    <h2>🛑 Pause → Name it → Picture later → Choose</h2>
+    <button onclick="showEmotion()">Next</button>
+  </div>
+
+  <!-- Emotion Logging -->
+  <div id="emotion" class="screen">
+    <input type="text" id="feeling" placeholder="I feel...">
+    <select id="habitType">
+      <option value="snacking">Snacking</option>
+      <option value="scrolling">Scrolling</option>
+      <option value="procrastination">Procrastination</option>
+      <option value="other">Other</option>
+    </select>
+    <button onclick="showDecision()">Next</button>
+  </div>
+
+  <!-- Decision Screen -->
+  <div id="decision" class="screen">
+    <h2>Choose your action</h2>
+    <button onclick="showReplace()">Replace Habit</button>
+    <button onclick="completeHabit(true)">Skip / Let it pass</button>
+  </div>
+
+  <!-- Replacement Screen -->
+  <div id="replace" class="screen">
+    <h2>Replace your habit</h2>
+    <p>Choose a replacement:</p>
+    <button onclick="completeReplacement('walk')">🚶 Walk</button>
+    <button onclick="completeReplacement('water')">💧 Drink Water</button>
+    <button onclick="completeReplacement('stretch')">🤸 Stretch</button>
+    <button onclick="completeReplacement('other')">✏️ Other</button>
+  </div>
+
+  <!-- Reflection / Tracking -->
+  <div id="tracking" class="screen">
+    <h2>Tracking & Motivation</h2>
+    <p>Current Streak: <span id="streakTracking">0</span></p>
+    <p>Points: <span id="pointsTracking">0</span></p>
+    <p>Replacements Today: <span id="replacementsTracking">0</span></p>
+    <p>Mindful Skips Today: <span id="skipsTracking">0</span></p>
+    <p id="motivationMessage"></p>
+    <p id="reflectionPrompt"></p>
+    <button onclick="resetStreak()">Reset Streak</button>
+    <button onclick="showHome()">Home</button>
+  </div>
+
+  <!-- Star Canvas -->
+  <canvas id="starCanvas"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
