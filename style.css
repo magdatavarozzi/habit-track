@@ -57,7 +57,7 @@ input, select{
   letter-spacing: 0.25rem !important;
   font-size: 1.2rem !important;
   color: #ffffff !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
 
   /* Visibility - Stays on top of the stars */
   z-index: 100000 !important;
@@ -65,6 +65,7 @@ input, select{
   display: block !important;
   pointer-events: none;
 }
+
 
 
 
