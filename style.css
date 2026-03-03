@@ -45,21 +45,41 @@ input, select{
 
 .tagline {
    position: fixed;
-   bottom: 30px; /* Gives it a bit of breathing room from the edge */
+   bottom: 5vh; /* Responsive height based on screen size */
    left: 0;
    right: 0;
    text-align: center;
-   font-size: 0.75rem; /* Small and subtle */
-   font-weight: 300;
-   letter-spacing: 1.5px;
+
+   /* Small Caps Styling */
+   font-variant: all-small-caps;
+   letter-spacing: 0.15rem;
+   font-size: 0.75rem;
+
    color: #bdc3c7;
-   text-transform: lowercase;
-   opacity: 0.5;
+   opacity: 0;
    pointer-events: none;
-   animation: simpleFade 4s ease-in;
+   z-index: 10; /* Ensures it stays above the background */
+
+   /* The Fade-In Animation */
+   animation: zenFade 2.5s ease-out forwards;
+   animation-delay: 0.8s;
 }
 
-@keyframes simpleFade {
-   0% { opacity: 0; }
-   100% { opacity: 0.5; }
+@keyframes zenFade {
+   0% {
+       opacity: 0;
+       transform: translateY(10px);
+   }
+   100% {
+       opacity: 0.5;
+       transform: translateY(0);
+   }
+}
+
+/* Responsive adjustment for small/landscape phones */
+@media (max-height: 500px) {
+   .tagline {
+       bottom: 10px;
+       font-size: 0.6rem;
+   }
 }
