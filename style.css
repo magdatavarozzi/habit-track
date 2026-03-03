@@ -43,24 +43,23 @@ input, select{
   z-index:9999;
 }
 
-.tagline {
+.tagline { /* Added the period here */
   position: fixed;
-  bottom: 30px;
+  bottom: 40px; /* Raised it slightly for iPhone home bars */
   left: 0;
   width: 100%;
   text-align: center;
 
+  /* Design */
   font-variant: all-small-caps;
   letter-spacing: 0.15rem;
   font-size: 0.8rem;
-  color: #bdc3c7;
+  color: #ffffff; /* Changed to white to test visibility first */
 
-  /* Set this to 10000 so it stays ABOVE the stars (which are at 9999) */
-  z-index: 10000;
+  /* The Layering Fix */
+  z-index: 10000 !important; /* One higher than the stars */
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.8;
+  display: block !important;
 }
- 
-
-
 
