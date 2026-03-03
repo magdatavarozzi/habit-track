@@ -43,26 +43,24 @@ input, select{
   z-index:9999;
 }
 
-tagline {
-   position: fixed;
-   bottom: 30px; /* 30 pixels from the bottom of the iPhone screen */
-   left: 0;
-   width: 100%;
-   text-align: center;
+.tagline {
+  position: fixed;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
 
-   /* Small Caps Style */
-   font-variant: all-small-caps;
-   letter-spacing: 0.15rem;
-   font-size: 0.8rem;
-   color: #bdc3c7;
+  font-variant: all-small-caps;
+  letter-spacing: 0.15rem;
+  font-size: 0.8rem;
+  color: #bdc3c7;
 
-   /* The "Star Canvas" Fix */
-   z-index: 9999; /* Higher than the canvas */
-   pointer-events: none;
-   opacity: 0.7;
+  /* Set this to 10000 so it stays ABOVE the stars (which are at 9999) */
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0.7;
 }
-
-
  
+
 
 
