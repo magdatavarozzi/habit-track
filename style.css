@@ -43,43 +43,24 @@ input, select{
   z-index:9999;
 }
 
-.tagline {
-   position: fixed;
-   bottom: 5vh; /* Responsive height based on screen size */
-   left: 0;
-   right: 0;
-   text-align: center;
-
-   /* Small Caps Styling */
-   font-variant: all-small-caps;
-   letter-spacing: 0.15rem;
-   font-size: 0.75rem;
-
-   color: #bdc3c7;
-   opacity: 0;
-   pointer-events: none;
-   z-index: 10; /* Ensures it stays above the background */
-
-   /* The Fade-In Animation */
-   animation: zenFade 2.5s ease-out forwards;
-   animation-delay: 0.8s;
-}
-
-@keyframes zenFade {
-   0% {
-       opacity: 0;
-       transform: translateY(10px);
-   }
-   100% {
-       opacity: 0.5;
-       transform: translateY(0);
-   }
-}
-
-/* Responsive adjustment for small/landscape phones */
-@media (max-height: 500px) {
    .tagline {
-       bottom: 10px;
-       font-size: 0.6rem;
+       position: fixed;
+       bottom: 20px;
+       left: 0;
+       right: 0;
+       text-align: center;
+       font-size: 12px;
+       font-weight: 300;
+       letter-spacing: 1px;
+       color: #bdc3c7; /* Light grey to stay "quiet" */
+       text-transform: lowercase;
+       opacity: 0.6;
+       font-family: sans-serif;
+       pointer-events: none; /* User can't click it accidentally */
+       animation: simpleFade 3s ease-in;
    }
-}
+
+   @keyframes simpleFade {
+       from { opacity: 0; }
+       to { opacity: 0.6; }
+   }
