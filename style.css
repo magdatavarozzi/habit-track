@@ -43,9 +43,9 @@ input, select{
   z-index:9999;
 }
 
-.tagline { /* Added the period here */
+.tagline {
   position: fixed;
-  bottom: 40px; /* Raised it slightly for iPhone home bars */
+  bottom: 20px;
   left: 0;
   width: 100%;
   text-align: center;
@@ -54,12 +54,10 @@ input, select{
   font-variant: all-small-caps;
   letter-spacing: 0.15rem;
   font-size: 0.8rem;
-  color: #ffffff; /* Changed to white to test visibility first */
+  color: rgba(255, 255, 255, 0.6); /* Soft white to match your gradient */
 
-  /* The Layering Fix */
-  z-index: 10000 !important; /* One higher than the stars */
+  /* This puts it ABOVE the stars and the gradient */
+  z-index: 10001;
   pointer-events: none;
-  opacity: 0.8;
-  display: block !important;
 }
 
