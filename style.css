@@ -42,3 +42,26 @@ input, select{
   pointer-events:none;
   z-index:9999;
 }
+.tagline {
+   position: fixed;
+   bottom: 30px; /* Gives it a bit of breathing room from the edge */
+   left: 0;
+   right: 0;
+   text-align: center;
+   font-size: 0.75rem; /* Small and subtle */
+   font-weight: 300;
+   letter-spacing: 1.5px;
+   color: #bdc3c7;
+   text-transform: lowercase;
+   opacity: 0.5;
+   pointer-events: none;
+   animation: simpleFade 4s ease-in;
+}
+
+@keyframes simpleFade {
+   0% { opacity: 0; }
+   100% { opacity: 0.5; }
+}
+
+ 
+
