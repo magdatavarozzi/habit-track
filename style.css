@@ -23,15 +23,6 @@ button{
   color:white;
   transition: background 0.3s, transform 0.2s;
 }
-.tagline-top{
- font-size: 1rem;           /* smaller than main title */
- color: #ffffff;            /* bright white to stand out */
- opacity: 0.9;              /* subtle, friendly */
- text-align: center;
- margin-top: 5px;           /* space below title */
- font-weight: 500;
- letter-spacing: 0.1rem;    /* optional, matches playful style */
-}
 button:hover{
   background-color: rgba(255,255,255,0.45);
   transform: scale(1.05);
@@ -63,7 +54,7 @@ input, select{
   z-index:9999;
 }
 
-.tagline-bottom {
+.tagline {
   position: fixed;
   bottom: 60px;
   left: 0;
@@ -80,4 +71,3 @@ input, select{
   display: block;
   pointer-events: none;
 }
-
