@@ -19,11 +19,14 @@ button{
   border-radius:8px;
   margin:10px;
   cursor:pointer;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.25);
   color:white;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
-button:hover{background-color: rgba(255,255,255,0.4);}
+button:hover{
+  background-color: rgba(255,255,255,0.45);
+  transform: scale(1.05);
+}
 input, select{
   padding:10px;
   font-size:16px;
@@ -32,7 +35,15 @@ input, select{
   border:none;
 }
 
-.screen{display:none;}
+.screen{
+  display:none;
+  opacity:0;
+  transition: opacity 0.3s ease-in-out;
+}
+.screen.show{
+  display:block;
+  opacity:1;
+}
 
 #starCanvas{
   position:fixed;
@@ -41,4 +52,22 @@ input, select{
   height:100%;
   pointer-events:none;
   z-index:9999;
+}
+
+.tagline {
+  position: fixed;
+  bottom: 60px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-variant: all-small-caps;
+  letter-spacing: 0.25rem;
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-weight:500;
+  z-index: 100000;
+  opacity: 1;
+  display: block;
+  pointer-events: none;
 }

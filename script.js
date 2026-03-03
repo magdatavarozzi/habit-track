@@ -4,20 +4,23 @@ let points = parseInt(localStorage.getItem('points')) || 0;
 let completedToday = parseInt(localStorage.getItem('completedToday')) || 0;
 let replacementsToday = parseInt(localStorage.getItem('replacementsToday')) || 0;
 let skipsToday = parseInt(localStorage.getItem('skipsToday')) || 0;
-
-updateUI();
 let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
 
-// Navigation
-function hideAllScreens(){document.querySelectorAll('.screen, #home').forEach(s=>s.style.display='none');}
-function showHome(){hideAllScreens(); document.getElementById('home').style.display='block';}
-function showTrigger(){hideAllScreens(); document.getElementById('trigger').style.display='block';}
-function showEmotion(){hideAllScreens(); document.getElementById('emotion').style.display='block';}
-function showDecision(){hideAllScreens(); document.getElementById('decision').style.display='block';}
-function showReplace(){hideAllScreens(); document.getElementById('replace').style.display='block';}
-function showTracking(){hideAllScreens(); document.getElementById('tracking').style.display='block'; updateUI();}
+let reflectionIndex = 0;
 
-// Update UI values
+updateUI();
+
+// --- Navigation ---
+function hideAllScreens(){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('show'));}
+function showScreen(id){hideAllScreens(); document.getElementById(id).classList.add('show');}
+function showHome(){showScreen('home');}
+function showTrigger(){showScreen('trigger');}
+function showEmotion(){showScreen('emotion');}
+function showDecision(){showScreen('decision');}
+function showReplace(){showScreen('replace');}
+function showTracking(){showScreen('tracking'); updateUI();}
+
+// --- Update UI ---
 function updateUI(){
   document.getElementById('streak').textContent=streak;
   document.getElementById('streakTracking').textContent=streak;
@@ -29,18 +32,19 @@ function updateUI(){
   document.getElementById('skipsTracking').textContent=skipsToday;
 }
 
-// Complete habit (skip)
+// --- Complete habit ---
 function completeHabit(skip=true){
   streak++;
   completedToday++;
   points += 10;
   if(skip) skipsToday++; else replacementsToday++;
+
   localStorage.setItem('streak', streak);
   localStorage.setItem('points', points);
   localStorage.setItem('completedToday', completedToday);
   localStorage.setItem('replacementsToday', replacementsToday);
   localStorage.setItem('skipsToday', skipsToday);
- 
+
   // Achievements
   if(skip && !achievements.includes("Mindful Skipper")){
     achievements.push("Mindful Skipper");
@@ -59,27 +63,26 @@ function completeHabit(skip=true){
   reflectionPrompt(skip);
 }
 
-// Replacement
-function completeReplacement(action){
-  completeHabit(false);
-}
+// --- Replacement ---
+function completeReplacement(action){ completeHabit(false); }
 
-// Motivational messages
+// --- Motivation ---
 function randomMotivation(){
   const messages = ["✅ Great job!","🎉 You replaced a habit!","🌟 Keep it going!","💪 Awesome!","👏 Well done!"];
   return messages[Math.floor(Math.random()*messages.length)];
 }
 function displayMotivation(msg){document.getElementById('motivationMessage').textContent=msg;}
 
-// Reflection prompt
+// --- Reflection Prompt ---
 function reflectionPrompt(skip){
   const prompts = skip ?
     ["Why did you skip this habit?","How did skipping help?"] :
     ["How did replacing help you today?","What did you learn from this action?"];
-  document.getElementById('reflectionPrompt').textContent=prompts[Math.floor(Math.random()*prompts.length)];
+  document.getElementById('reflectionPrompt').textContent = prompts[reflectionIndex % prompts.length];
+  reflectionIndex++;
 }
 
-// Reset
+// --- Reset ---
 function resetStreak(){
   streak=0; points=0; completedToday=0; replacementsToday=0; skipsToday=0;
   localStorage.setItem('streak', streak);
@@ -90,7 +93,7 @@ function resetStreak(){
   showTracking();
 }
 
-// Star animation
+// --- Star animation ---
 function launchStars(){
   const canvas=document.getElementById('starCanvas');
   const ctx=canvas.getContext('2d');
